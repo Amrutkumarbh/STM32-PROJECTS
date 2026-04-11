@@ -113,5 +113,6 @@ Feel free to open an **Issue** or submit a **Pull Request**.
 This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
 
 ---
-
-⭐ If you find this helpful, consider giving the repo a star!
+<p align="center">
+  ⭐ If you find this helpful, consider giving the repo a star!
+</p>
