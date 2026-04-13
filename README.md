@@ -29,13 +29,13 @@ Each project folder is self-contained and includes:
 
 ---
 
-## 📁 Project Index
-
 | # | Project | Peripheral / Concept | Status |
-|---|---------|----------------------|--------|
+|---|---|---|---|
 | 01 | [LED](./LED) | GPIO Output – Bare Metal | ✅ Done |
 | 02 | [LEDblink](./LEDblink) | GPIO + SysTick / HAL Delay | ✅ Done |
-| 03 | *(Coming soon)* | — | 🔄 In Progress |
+| 03 | [LED_interrupt](./LED_interrupt) | GPIO + EXTI / NVIC Interrupt | ✅ Done |
+| 04 | [LED_Timer_polling](./LED_Timer_polling) | TIM Base + UIF Flag Polling | ✅ Done |
+| 05 | *(Coming soon)* | — | 🔄 In Progress |
 
 > 📌 This table is updated daily as new projects are added.
 
