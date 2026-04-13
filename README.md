@@ -92,14 +92,19 @@ cd STM32-PROJECTS
 
 ---
 
-## 📂 Repository Structure
+## 📁 Repository Structure
+
+```
 STM32-PROJECTS/
 │
-├── LED/                  # Project 01 – Basic LED ON
-├── LEDblink/             # Project 02 – LED Blink
+├── LED/                    # 01 - GPIO Output, bare metal LED control
+├── LEDblink/               # 02 - GPIO + HAL_Delay() SysTick blink
+├── LED_interrupt/          # 03 - GPIO + EXTI + NVIC interrupt-driven LED
+├── LED_Timer_polling/      # 04 - TIM Base + UIF flag polling LED toggle
+│
 ├── .gitignore
 └── README.md
----
+```
 
 ## 🤝 Contributing
 
