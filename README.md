@@ -1,124 +1,100 @@
-# 🔧 STM32F407 Projects
+# 🧠 STM32 Embedded Systems — Learning Journey
 
-![STM32](https://img.shields.io/badge/MCU-STM32F407-blue?style=for-the-badge&logo=stmicroelectronics)
-![Language](https://img.shields.io/badge/Language-C-orange?style=for-the-badge&logo=c)
-![IDE](https://img.shields.io/badge/IDE-STM32CubeIDE-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active%20Daily-brightgreen?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
-> A daily log of embedded systems projects built on the **STM32F407 Discovery Board**, covering bare-metal programming, HAL-based drivers, peripherals, RTOS, and more — one project at a time.
+> This repository documents my hands-on learning path through embedded systems programming on STM32 microcontrollers.
+> Each project is a focused exercise on a specific peripheral or concept — built progressively from bare-metal GPIO
+> all the way to communication protocols and waveform generation — using **STM32CubeIDE** and the **HAL library**.
 
 ---
 
-## 👤 Author
+## 👨‍💻 About
 
-**Amrutkumarbh**  
-📅 Started: April 2025  
-🔗 GitHub: [@Amrutkumarbh](https://github.com/Amrutkumarbh)
-
----
-
-## 🧠 About This Repository
-
-This repository is a hands-on learning journal for mastering the **STM32F407VGT6** microcontroller. A new project is added every day, progressing from simple GPIO control to complex real-time systems.
-
-Each project folder is self-contained and includes:
-- Source code (`.c` / `.h`)
-- Project configuration files
-- A dedicated `README.md` explaining the concept
+**Amrut Kumar**  
+Embedded Systems Learner & Developer  
+[![GitHub](https://img.shields.io/badge/GitHub-Amrutkumarbh-181717?logo=github)](https://github.com/Amrutkumarbh)
 
 ---
 
-| # | Project | Peripheral / Concept | Status |
-|---|---|---|---|
-| 01 | [LED](./LED) | GPIO Output – Bare Metal | ✅ Done |
-| 02 | [LEDblink](./LEDblink) | GPIO + SysTick / HAL Delay | 
-| 03 | [LED_interrupt](./LED_interrupt) | GPIO + EXTI / NVIC Interrupt | ✅ Done |
-| 04 | [LED_Timer_polling](./LED_Timer_polling) | TIM Base + UIF Flag Polling | ✅ Done |
-| 05 | [Switch_LED](./Switch_LED)|✅ Done |
-| 06 | *(Coming soon)* | — | 🔄 In Progress |
+## 🛠️ Development Environment
 
-> 📌 This table is updated daily as new projects are added.
-
----
-
-## 🛠️ Hardware & Tools
-
-| Component | Details |
-|-----------|---------|
-| **Board** | STM32F407G-DISC1 (Discovery Kit) |
-| **MCU** | STM32F407VGT6 – ARM Cortex-M4 @ 168 MHz |
+| Tool | Details |
+|------|---------|
 | **IDE** | STM32CubeIDE |
-| **HAL** | STM32 HAL / LL Drivers |
-| **Debugger** | ST-LINK/V2 (onboard) |
-| **Language** | C (C11) |
+| **Framework** | STM32 HAL (Hardware Abstraction Layer) |
+| **Language** | Embedded C |
+| **Programmer** | ST-LINK V2 |
+| **Target MCU** | STM32F407 (Black Pill / Discovery) |
 
 ---
 
-## 🚀 Getting Started
+## 📘 Learning Path & Projects
 
-### Prerequisites
-- [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html) installed
-- STM32F407 Discovery Board
-- USB Mini-B cable
+Projects follow a natural learning progression — from the simplest GPIO output up through timers, interrupts, and analog peripherals.
 
-### Clone the Repository
+| # | Project | Peripheral / Concept | What I Learned | Status |
+|---|---------|----------------------|----------------|--------|
+| 01 | [`LED`](./LED) | GPIO Output — Bare Metal | Register-level GPIO setup; understanding RCC clock enable and ODR | ✅ Done |
+| 02 | [`LEDblink`](./LEDblink) | GPIO + SysTick / HAL Delay | HAL_Delay internals, SysTick timer, the embedded "Hello World" | ✅ Done |
+| 03 | [`LED_interrupt`](./LED_interrupt) | GPIO + EXTI / NVIC Interrupt | External interrupt lines, NVIC priority, event-driven vs polling | ✅ Done |
+| 04 | [`LED_Timer_polling`](./LED_Timer_polling) | TIM Base + UIF Flag Polling | Timer base unit, prescaler & ARR calculation, polling UIF flag | ✅ Done |
+| 05 | [`Swtch_LED`](./Swtch_LED) | GPIO Input + Output | Debounce logic, reading IDR, linking input state to output | ✅ Done |
+| 06 | [`DAC_Square`](./DAC_Square) | DAC — Square Wave | DAC initialization, output voltage steps, waveform via HAL | ✅ Done |
+| 07 | [`DAC_TRIANGLE`](./DAC_TRIANGLE) | DAC — Triangle Wave | Iterative DAC value ramping, waveform shaping fundamentals | ✅ Done |
+---
+
+## 🚀 How to Run a Project
+
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/Amrutkumarbh/STM32-PROJECTS.git
 cd STM32-PROJECTS
 ```
 
-### Running a Project
-1. Open **STM32CubeIDE**
-2. Go to `File → Open Projects from File System`
-3. Navigate to the desired project folder (e.g., `LEDblink/`)
-4. Click **Finish** to import
-5. Build with `Ctrl+B` and flash using `Run → Debug`
+### 2. Open in STM32CubeIDE
+
+1. Launch **STM32CubeIDE**
+2. Go to **File → Open Projects from File System**
+3. Browse into the project folder (e.g., `./LED_interrupt`)
+4. Click **Finish**
+5. **Build:** `Ctrl + B`  →  **Flash:** click **Run** ▶️
+
+> Each project's `.ioc` file can be opened in **STM32CubeMX** to inspect pin/peripheral configuration visually.
 
 ---
 
-## 📚 Topics Covered (Roadmap)
+## 📂 Project Structure
 
-- [x] GPIO – Digital Output / Blink
-- [ ] GPIO – Button Input & Interrupt (EXTI)
-- [ ] Timers – Basic, PWM, Input Capture
-- [ ] UART – Serial Communication
-- [ ] SPI – Sensor Interfacing
-- [ ] I2C – OLED / Sensor Driver
-- [ ] ADC – Analog Read
-- [ ] DMA – Direct Memory Access
-- [ ] FreeRTOS – Multitasking Basics
-- [ ] CAN Bus
-- [ ] USB CDC (Virtual COM Port)
-
----
-
-## 📁 Repository Structure
+Every project follows the standard STM32CubeIDE layout:
 
 ```
-STM32-PROJECTS/
-│
-├── LED/                    # 01 - GPIO Output, bare metal LED control
-├── LEDblink/               # 02 - GPIO + HAL_Delay() SysTick blink
-├── LED_interrupt/          # 03 - GPIO + EXTI + NVIC interrupt-driven LED
-├── LED_Timer_polling/      # 04 - TIM Base + UIF flag polling LED toggle
-│
-├── .gitignore
-└── README.md
+ProjectName/
+├── Core/
+│   ├── Inc/            # Header files (.h)
+│   └── Src/            # Source files — main.c + peripheral init
+├── Drivers/            # STM32 HAL & CMSIS (auto-generated)
+├── .ioc                # CubeMX hardware configuration
+└── Theory.md           # Concept notes & learning summary (where available)
 ```
 
-## 🤝 Contributing
+---
 
-This is a personal learning repo, but suggestions and improvements are always welcome!  
-Feel free to open an **Issue** or submit a **Pull Request**.
+## 📌 Concepts Covered So Far
+
+- ✅ GPIO — Bare-metal output, HAL output, digital input
+- ✅ Interrupts — EXTI lines, NVIC configuration, ISR handling
+- ✅ Timers — TIM Base unit, prescaler/ARR, UIF polling
+- ✅ DAC — Square wave and triangle wave generation
+- 🔄 PWM — Timer PWM mode *(in progress)*
+- 📋 ADC, UART, I2C, SPI, DMA — *(coming up)*
 
 ---
 
-## 📄 License
+## 📝 Notes
 
-This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+- Each project includes or will include a `Theory.md` file explaining the concept, register-level background, and key takeaways.
+- This repo is actively updated as I progress through the learning path.
+- Mistakes and iterations are part of the process — commit history reflects real learning, not polished end results.
 
 ---
-<p align="center">
-  ⭐ If you find this helpful, consider giving the repo a star!
-</p>
+
+> 💡 *Learning embedded systems one peripheral at a time — from blink to protocol stack.*
