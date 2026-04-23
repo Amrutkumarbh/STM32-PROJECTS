@@ -1,100 +1,129 @@
-# 🧠 STM32 Embedded Systems — Learning Journey
+# 🔧 STM32 Embedded Systems — Learning Journey
 
-> This repository documents my hands-on learning path through embedded systems programming on STM32 microcontrollers.
-> Each project is a focused exercise on a specific peripheral or concept — built progressively from bare-metal GPIO
-> all the way to communication protocols and waveform generation — using **STM32CubeIDE** and the **HAL library**.
+A hands-on collection of STM32 embedded systems projects built using **STM32CubeIDE** and **HAL drivers**, documenting my learning journey through peripherals, communication protocols, and real-world embedded concepts.
 
----
-
-## 👨‍💻 About
-
-**Amrut Kumar**  
-Embedded Systems Learner & Developer  
-[![GitHub](https://img.shields.io/badge/GitHub-Amrutkumarbh-181717?logo=github)](https://github.com/Amrutkumarbh)
+> 📌 Each project is self-contained with its own source code and documentation. New projects are added regularly as I progress.
 
 ---
 
-## 🛠️ Development Environment
+## 🛠️ Development Setup
 
 | Tool | Details |
-|------|---------|
-| **IDE** | STM32CubeIDE |
-| **Framework** | STM32 HAL (Hardware Abstraction Layer) |
+|---|---|
+| **IDE** | STM32CubeIDE 1.18.1 |
+| **Library** | STM32 HAL (Hardware Abstraction Layer) |
+| **Target Board** | STM32F407VG (Discovery) |
 | **Language** | Embedded C |
-| **Programmer** | ST-LINK V2 |
-| **Target MCU** | STM32F407 (Black Pill / Discovery) |
+| **Debugger** | ST-Link / SWV (Serial Wire Viewer) |
 
 ---
 
-## 📘 Learning Path & Projects
+## 📁 Projects
 
-Projects follow a natural learning progression — from the simplest GPIO output up through timers, interrupts, and analog peripherals.
+### 💡 GPIO & LED Control
 
-| # | Project | Peripheral / Concept | What I Learned | Status |
-|---|---------|----------------------|----------------|--------|
-| 01 | [`LED`](./LED) | GPIO Output — Bare Metal | Register-level GPIO setup; understanding RCC clock enable and ODR | ✅ Done |
-| 02 | [`LEDblink`](./LEDblink) | GPIO + SysTick / HAL Delay | HAL_Delay internals, SysTick timer, the embedded "Hello World" | ✅ Done |
-| 03 | [`LED_interrupt`](./LED_interrupt) | GPIO + EXTI / NVIC Interrupt | External interrupt lines, NVIC priority, event-driven vs polling | ✅ Done |
-| 04 | [`LED_Timer_polling`](./LED_Timer_polling) | TIM Base + UIF Flag Polling | Timer base unit, prescaler & ARR calculation, polling UIF flag | ✅ Done |
-| 05 | [`Swtch_LED`](./Swtch_LED) | GPIO Input + Output | Debounce logic, reading IDR, linking input state to output | ✅ Done |
-| 06 | [`DAC_Square`](./DAC_Square) | DAC — Square Wave | DAC initialization, output voltage steps, waveform via HAL | ✅ Done |
-| 07 | [`DAC_TRIANGLE`](./DAC_TRIANGLE) | DAC — Triangle Wave | Iterative DAC value ramping, waveform shaping fundamentals | ✅ Done |
----
-
-## 🚀 How to Run a Project
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Amrutkumarbh/STM32-PROJECTS.git
-cd STM32-PROJECTS
-```
-
-### 2. Open in STM32CubeIDE
-
-1. Launch **STM32CubeIDE**
-2. Go to **File → Open Projects from File System**
-3. Browse into the project folder (e.g., `./LED_interrupt`)
-4. Click **Finish**
-5. **Build:** `Ctrl + B`  →  **Flash:** click **Run** ▶️
-
-> Each project's `.ioc` file can be opened in **STM32CubeMX** to inspect pin/peripheral configuration visually.
+| Project | Description |
+|---|---|
+| [LEDblink](./LEDblink) | Basic LED blink using HAL_Delay — the classic first embedded project |
+| [LED](./LED) | GPIO output control with structured code and theory |
+| [Swtch_LED](./Swtch_LED) | Toggle LED using a push button (polling) |
+| [LED_interrupt](./LED_interrupt) | Button-triggered LED using external interrupts (EXTI) |
+| [LED_Timer_polling](./LED_Timer_polling) | LED blink using hardware timer in polling mode |
+| [Potentiometer_multi_led](./Potentiometer_multi_led) | Control multiple LEDs based on ADC potentiometer value |
 
 ---
 
-## 📂 Project Structure
+### ⏱️ Timers & PWM
 
-Every project follows the standard STM32CubeIDE layout:
-
-```
-ProjectName/
-├── Core/
-│   ├── Inc/            # Header files (.h)
-│   └── Src/            # Source files — main.c + peripheral init
-├── Drivers/            # STM32 HAL & CMSIS (auto-generated)
-├── .ioc                # CubeMX hardware configuration
-└── Theory.md           # Concept notes & learning summary (where available)
-```
+| Project | Description |
+|---|---|
+| [Counters](./Counters) | Timer counter modes — up, down, center-aligned |
+| [PWM](./PWM) | PWM signal generation using TIM peripheral |
+| [Freq_Counter](./Freq_Counter) | Measure input signal frequency using timer input capture |
 
 ---
 
-## 📌 Concepts Covered So Far
+### 📡 ADC & DAC
 
-- ✅ GPIO — Bare-metal output, HAL output, digital input
-- ✅ Interrupts — EXTI lines, NVIC configuration, ISR handling
-- ✅ Timers — TIM Base unit, prescaler/ARR, UIF polling
-- ✅ DAC — Square wave and triangle wave generation
-- 🔄 PWM — Timer PWM mode *(in progress)*
-- 📋 ADC, UART, I2C, SPI, DMA — *(coming up)*
-
----
-
-## 📝 Notes
-
-- Each project includes or will include a `Theory.md` file explaining the concept, register-level background, and key takeaways.
-- This repo is actively updated as I progress through the learning path.
-- Mistakes and iterations are part of the process — commit history reflects real learning, not polished end results.
+| Project | Description |
+|---|---|
+| [ADC_Potentiometer](./ADC_Potentiometer) | Read analog voltage from a potentiometer using ADC polling |
+| [DAC_Square](./DAC_Square) | Generate square wave using DAC output |
+| [DAC_TRIANGLE](./DAC_TRIANGLE) | Generate triangle wave using DAC output |
+| [k_thermocouple](./k_thermocouple) | Read temperature from a K-type thermocouple via SPI |
 
 ---
 
-> 💡 *Learning embedded systems one peripheral at a time — from blink to protocol stack.*
+### 🔁 DMA
+
+| Project | Description |
+|---|---|
+| [DMA](./DMA) | Memory-to-memory and peripheral DMA transfers |
+
+---
+
+### 🔗 Communication Protocols
+
+| Project | Description |
+|---|---|
+| [UART](./UART) | UART transmit — sending data to serial terminal |
+| [UART_Reception](./UART_Reception) | UART receive — reading incoming serial data |
+| [Printf_SWV](./Printf_SWV) | Redirect printf output to SWV Debug Console (ITM) |
+| [I2C_COMM](./I2C_COMM) | I2C communication between master and slave |
+| [I2C_Tx_Rx](./I2C_Tx_Rx) | I2C transmit and receive with interrupt handling |
+| [CAN_Comm](./CAN_Comm) | CAN bus communication — transmit and receive frames |
+
+---
+
+### 🔍 Sensors & Interfaces
+
+| Project | Description |
+|---|---|
+| [IR_SENSOR](./IR_SENSOR) | Read IR sensor output using GPIO interrupt |
+
+---
+
+### 🛡️ System & Reliability
+
+| Project | Description |
+|---|---|
+| [IWDT](./IWDT) | Independent Watchdog Timer — system reset on hang detection |
+
+---
+
+## 📈 Progress
+
+- [x] GPIO & LED basics  
+- [x] Timers (polling, interrupt, PWM, input capture)  
+- [x] ADC & DAC  
+- [x] DMA transfers  
+- [x] UART communication  
+- [x] SWV / Printf debugging  
+- [x] I2C protocol  
+- [x] CAN bus  
+- [x] Watchdog timer  
+- [ ] SPI (in progress)  
+- [ ] RTC (upcoming)  
+- [ ] FreeRTOS (upcoming)  
+
+---
+
+## 🚀 How to Use Any Project
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Amrutkumarbh/STM32-PROJECTS.git
+   ```
+2. Open **STM32CubeIDE** → `File → Open Projects from File System`
+3. Navigate to the desired project folder
+4. Build (`Ctrl + B`) and flash to your STM32 board
+
+---
+
+## 🤝 Connect
+
+If you're also learning embedded systems or want to discuss any of these projects, feel free to open an issue or reach out!
+
+---
+
+*This repository is actively maintained as part of my embedded systems learning journey. ⚡*
