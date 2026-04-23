@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 */Debug/
 */Release/
 */.settings/
@@ -7,3 +8,23 @@
 *.bin
 *.hex
 *.map
+=======
+# Build folders
+Debug/
+Release/
+build/
+
+# STM32CubeIDE
+.settings/
+*.launch
+
+# Temporary files
+*.o
+*.d
+*.elf
+*.map
+
+# OS files
+.DS_Store
+Thumbs.db
+>>>>>>> 82044c8c28a65d6f2b626e9820aeda2cc050d26c
